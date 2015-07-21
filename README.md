@@ -1,4 +1,4 @@
-# Fastbill [![Build Status](https://secure.travis-ci.org/suchasurge/rjiffy.png)](http://travis-ci.org/suchasurge/fastbill)
+# Fastbill
 
 Ruby API wrapper for the fastbill.com API
 
@@ -8,7 +8,7 @@ __NOTE__: This is work in progress and not yet available as a gem.
 
 Add this line to your application's Gemfile:
 
-    gem 'fastbill'
+    gem 'fastbill', :git => "git://github.com/philklei/fastbill.git"
 
 And then execute:
 

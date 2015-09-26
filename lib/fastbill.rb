@@ -4,6 +4,7 @@ module Fastbill
   require "excon"
   require "json"
   require "hashie"
+  require "faraday"
 
   autoload :Model, "fastbill/model"
   autoload :Configuration, "fastbill/configuration"

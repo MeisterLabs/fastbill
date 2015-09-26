@@ -18,6 +18,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency "excon"
   gem.add_dependency "json"
   gem.add_dependency "hashie"
+  gem.add_dependency "faraday"
   gem.add_dependency "jruby-openssl" if RUBY_PLATFORM == 'java'
 
   gem.add_development_dependency "minitest"

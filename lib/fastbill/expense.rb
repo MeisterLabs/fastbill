@@ -17,6 +17,16 @@ module Fastbill
       data
     end
     
+    def upload(file)
+      
+      action = :create
+      response = self.class.request_multipart(action, file, :DATA => to_hash)
+      self.id = response["#{self.class.model_name.upcase}_ID"]
+      
+      self
+      
+    end
+    
     class << self
       
       def find_by_invoice_id(invoide_id)

@@ -42,6 +42,16 @@ module Fastbill
         
         response
       end
+      
+      def request_multipart(action, file, request_data = {})
+        call= { SERVICE: "#{model_name}.#{action}" }.update(request_data)
+        response = Fastbill::Request.post_multipart(call.to_json, file, call[:DATA][:INVOICE_NUMBER])
+        if response.key?('ERRORS')
+          raise response['ERRORS'].join(',') + "(call: #{call.inspect})"
+        end
+        
+        response
+      end
 
       def model_name
         name.split('::').last.downcase

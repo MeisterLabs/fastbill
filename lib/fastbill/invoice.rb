@@ -6,7 +6,7 @@ module Fastbill
   class InvoiceItem < Fastbill::Model
     property :id, from: :INVOICE_ITEM_ID
     fastbill_properties :article_number, :description, :quantity, :unit_price, :vat_percent, :vat_value, 
-      :complete_net, :complete_gross, :sort_order
+      :complete_net, :complete_gross, :sort_order, :category
   end
   
   class Invoice < Fastbill::Model
@@ -59,8 +59,8 @@ module Fastbill
         response[model_name_plural.upcase.to_sym].collect { |invoice| new(invoice) }
       end
       
-      def find_by_month(month)
-        response = request(:get, :FILTER => { :MONTH => month })
+      def find_by_month(month, year)
+        response = request(:get, :FILTER => { :MONTH => month, :YEAR => year  })
         return nil if response[model_name_plural.upcase.to_sym].nil?
         response[model_name_plural.upcase.to_sym].collect { |invoice| new(invoice) }
       end

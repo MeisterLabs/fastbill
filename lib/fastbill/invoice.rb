@@ -60,8 +60,19 @@ module Fastbill
         response[model_name_plural.upcase.to_sym].collect { |invoice| new(invoice) }
       end
       
-      def find_by_month(month, year)
-        response = request(:get, :FILTER => { :MONTH => month, :YEAR => year  })
+      def find_all_by_month_year(month, year)
+      	result = []
+        offset = 0
+        begin
+      	  ret =	find_by_month(month,year,offset, 50)
+          offset += 50
+          result += ret
+        end while ret != nil && ret.length != 0
+      	return result
+      end
+
+      def find_by_month(month, year, offset=0, limit=10)
+        response = request(:get, :LIMIT => limit, :OFFSET => offset, :FILTER => { :MONTH => month, :YEAR => year  })
         return nil if response[model_name_plural.upcase.to_sym].nil?
         response[model_name_plural.upcase.to_sym].collect { |invoice| new(invoice) }
       end

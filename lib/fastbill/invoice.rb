@@ -20,7 +20,8 @@ module Fastbill
       :delivery_date, :sub_total, :vat_total, :total, :document_url, :customer_number, :project_id, 
       :invoice_title, :organization, :note, :salutation,
       :first_name, :last_name, :address, :address_2, :zipcode, :city, :comment_ , :payment_type, :days_for_payment, :bank_name, :bank_account_number, :bank_code, :bank_account_owner, 
-      :bank_iban, :bank_bic, :affiliate, :country_code, :vat_id, :currency_code, :subscription_id, :payment_info, :lastupdate
+      :bank_iban, :bank_bic, :affiliate, :country_code, :vat_id, :currency_code, :subscription_id, :payment_info, :lastupdate,
+      :contact_id, :payments
       
     def to_hash
       data = super
